@@ -1,13 +1,13 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import GithubContext from '../../context/github/githubContext';
-import AlertContext from '../../context/alert/alertContext'
+import AlertContext from '../../context/alert/alertContext';
 
 const Search = () => {
 	const githubContext = useContext(GithubContext);
-	const alertContext = useContext(AlertContext)
+	const alertContext = useContext(AlertContext);
 
-	const {searchUsers} = githubContext;
-	const {setAlert} = alertContext;
+	const { searchUsers } = githubContext;
+	const { setAlert } = alertContext;
 
 	const [text, setText] = useState('');
 
@@ -24,17 +24,11 @@ const Search = () => {
 			setText('');
 		}
 	};
-		
+
 	return (
 		<div>
 			<form className='from' onSubmit={onSubmit}>
-				<input
-					type='text'
-					name='text'
-					placeholder='Search User...'
-					value={text}
-					onChange={handleChange}
-				/>
+				<input type='text' name='text' placeholder='Search User...' value={text} onChange={handleChange} />
 				<input type='submit' value='Search' className='btn btn-dark btn-block' />
 			</form>
 			{githubContext.users.length > 0 && (
@@ -44,6 +38,6 @@ const Search = () => {
 			)}
 		</div>
 	);
-}
+};
 
 export default Search;
